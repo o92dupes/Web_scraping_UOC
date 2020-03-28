@@ -1,0 +1,28 @@
+import requests
+import json
+import pandas as pd
+
+r = requests.get('https://apidatos.ree.es/es/datos/demanda/evolucion?start_date=2020-01-01T00:00&end_date=2020-03-08T22:00&time_trunc=day&geo_limit=peninsular&geo_ids=8741')
+#response = requests.get('https://apidatos.ree.es/en/datos/demanda/ire-general?start_date=2018-01-01T00:00&end_date=2018-12-31T23:59&time_trunc=month&geo_trunc=electric_system&geo_limit=peninsular&geo_ids=8741')
+#response = requests.get('https://apidatos.ree.es/es/datos/demanda/demanda-maxima-horaria?start_date=2020-01-01T00:00&end_date=2020-03-08T22:00&time_trunc=month&geo_trunc=electric_system&geo_limit=peninsular&geo_ids=8741')
+
+#normalización del fichero .json extraido de aplicación API
+b=json.loads(r.text)
+c=b['included']
+d=c[0]
+e=d['attributes']
+f=e['values']
+
+#generar objeto DataFrame
+elect=pd.DataFrame(f)
+
+#renombrar/eliminar columnas del objeto DataFrame
+elect=elect.rename(columns={'value':'ev_demanda','percentage':'percentage','datetime':'date'})
+elect=elect.drop(['percentage'],axis=1)
+
+#generación columnas con diferenciación mes-dia-año
+elect['year']=pd.DatetimeIndex(elect['date']).year
+elect['month']=pd.DatetimeIndex(elect['date']).month
+elect['day']=pd.DatetimeIndex(elect['date']).day
+
+elect_month=elect.groupby(['month'])['ev_demanda'].max()

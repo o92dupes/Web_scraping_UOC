@@ -42,7 +42,7 @@ def casos_covid():
 # Definimos el DataFrame con los nombres de las columnas   
     df = pd.DataFrame(data, columns=['Pais','Casos_totales','Nuevos_casos','Muertes_totales',
     'Nuevas_muertes','Total_recuperados','Casos_activos','Casos_criticos','Casos_1M_Pop','Muertes_1M_Pop',
-    'Fecha primer_caso'])
+    'Fecha_primer_caso'])
 # Convertimos El DataFrame al archivo csv deseado
     df.to_csv('Casos_COVID.csv')    
     

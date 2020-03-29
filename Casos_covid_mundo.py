@@ -44,7 +44,7 @@ def casos_covid():
     'Nuevas_muertes','Total_recuperados','Casos_activos','Casos_criticos','Casos_1M_Pop','Muertes_1M_Pop',
     'Fecha_primer_caso'])
 # Convertimos El DataFrame al archivo csv deseado
-    df.to_csv('Casos_COVID.csv')    
+    df.to_csv('Casos_COVID_mundo.csv')    
     
     
 casos_covid()

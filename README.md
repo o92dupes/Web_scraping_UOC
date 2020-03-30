@@ -8,7 +8,7 @@ En esta práctica, se abordará diferentes alternativas para la extracción de d
   - https://www.worldometers.info/coronavirus/
   - https://www.ree.es/es
   
-Para la extracción de datos se ha usado el lenguaje de programación Python, optando por ténicas de web scraping para el primer entorno web, junto con la plataforma API habilitada en el caso de la web Red Electrica de España. Ambas ténicas tilizadas se han ajustado en todo momento a los criterios que se especifican en el guión proporcionado por el equipo docente de la asignatura.
+Para la extracción de datos se ha usado el lenguaje de programación Python, optando por ténicas de web scraping para el primer entorno web, junto con la plataforma API habilitada en el caso de la web Red Electrica de España. Ambas técnicas, se han ajustado en todo momento a los criterios que se especifican en el guión proporcionado por el equipo docente de la asignatura.
 
 Autores:
 Alejandro Guijarro Gallardo

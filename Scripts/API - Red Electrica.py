@@ -66,45 +66,46 @@ elect_month19=elect19.groupby(['month'])['ev_demanda'].max()
 fig, ax1=plt.subplots()
 elect20['ev_demanda'].plot(label='2020')
 elect19['ev_demanda'].plot(label='2019')
-ax1.set_xlabel("Time")
+ax1.set_xlabel("Days")
 ax1.set_ylabel("ev_demanda")
 ax1.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda enero-febrero-marzo 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Graficos\Grafico_anual.png")
+plt.savefig("Grafico_anual.png")
 
 #gráfico mensual - enero
 fig, ax2=plt.subplots()
 elect20_jan['ev_demanda'].plot(label='2020')
 elect19_jan['ev_demanda'].plot(label='2019')
-ax2.set_xlabel("Time")
+ax2.set_xlabel("Days")
 ax2.set_ylabel("ev_demanda")
 ax2.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda enero 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Graficos\Grafico_enero.png")
+plt.savefig("Grafico_enero.png")
 
 #gráfico mensual-febrero
 fig, ax3=plt.subplots()
 elect20_feb['ev_demanda'].plot(label='2020')
 elect19_feb['ev_demanda'].plot(label='2019')
-ax3.set_xlabel("Time")
+ax3.set_xlabel("Days")
 ax3.set_ylabel("ev_demanda")
 ax3.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda febrero 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Graficos\Grafico_febrero.png")
+plt.savefig("Grafico_febrero.png")
 
 #gráfico mensual-marzo
 fig, ax4=plt.subplots()
 elect20_mar['ev_demanda'].plot(label='2020')
 elect19_mar['ev_demanda'].plot(label='2019')
-ax4.set_xlabel("Time")
+ax4.set_xlabel("Days")
 ax4.set_ylabel("ev_demanda")
 ax4.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda marzo 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Graficos\Grafico_marzo.png")
+plt.savefig("Grafico_marzo.png")
 
 # Convertimos el df en un csv
-elect20.to_csv('csv\Consumo_elect_COVID.csv') 
+elect20.to_csv('Consumo_elect_COVID_2020.csv') 
+elect19.to_csv('Consumo_elect_COVID_2019.csv')

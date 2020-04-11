@@ -29,9 +29,10 @@ def casos_covid():
     # Definimos una lista donde se almacenarán los datos
     data = []
     
-    # Creamos el bucle que iterará todas las filas y las columnas (o las que queramos) de la tabla y las añadimos a la lista
+    # Creamos el bucle que iterará todas las filas y las columnas (o las que queramos) de la tabla y 
+    # las añadimos a la lista
     table_body = table.find('tbody')
-    rows = table_body.find_all('tr')
+    rows = table_body.find_all('tr')[7:]
     for row in rows:
         cols = row.find_all('td')
         cols = [ele.text.strip() for ele in cols]
@@ -40,12 +41,11 @@ def casos_covid():
 
  
 # Definimos el DataFrame con los nombres de las columnas   
-    df = pd.DataFrame(data, columns=['Pais','Casos_totales','Nuevos_casos','Muertes_totales',
+    df = pd.DataFrame(data, columns=['Pais/Otro','Casos_totales','Nuevos_casos','Muertes_totales',
     'Nuevas_muertes','Total_recuperados','Casos_activos','Casos_criticos','Casos_1M_Pop','Muertes_1M_Pop',
     'Total_Test','Total_Test_1M_Pop','Continente'])
-    'Total_Test','Total_Test_1M_Pop'])
 # Convertimos El DataFrame al archivo csv deseado
-    df.to_csv('Casos_COVID_mundo.csv')    
+    df.to_csv('csv\Casos_COVID_mundo.csv')    
     
 casos_covid()
 

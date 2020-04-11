@@ -14,15 +14,20 @@ def casos_covid_espana():
     # Definimos el parser
     soup = BeautifulSoup(data,'lxml')
     # Buscamos la tabla de donde extraeremos los datos
-    table = soup.find_all('table')
+    table_body = soup.find_all('tbody')[1:]
     
-    print(table)
-    # Hasta aquí todo correcto y a partir de aquí no se acceder al tag del cuerpo de la tabla. He probado 
-    # todos los métodos que se me ocurren (los hijos, los padres, el select, el next, etc.) y he buscado 
-    # en mil sitios por internet y nada... Incluso he intentado acceder a la tabla mediante la librería Scrapy 
+    print(table_body)
+
+    #
+    # Hasta aquí todo correcto pero a partir de aquí no se acceder a los tag de tr y td (Da el siguiente 
+    # error: AttributeError: 'list' object has no attribute 'find_all'). 
+
+    # He probado todos los métodos que se me ocurren (los hijos, los padres, el select, el next, etc.) 
+    # y he buscado en mil sitios por internet y nada... Incluso he intentado acceder a la tabla mediante 
+    # la librería Scrapy. Al final he optado por descargar los datos directamente de la página para poder
+    # generar las gráficas que queriamos obtener.
     # 
-    table_body = table.find_all_next('tbody')
-    #print(table_body)
+
     # Definimos las condiciones que nos devolveran el mensaje de error
     if r.status_code != 200:
         return msg
@@ -30,14 +35,14 @@ def casos_covid_espana():
     if not data:
         return msg
     
-    if not table:
+    if not table_body:
         return msg
 
     # Definimos una lista donde se almacenarán los datos
     data = []
     
     # Creamos el bucle que iterará todas las filas y las columnas (o las que queramos) de la tabla y las añadimos a la lista
-    rows = table.find_all('tr')
+    rows = table_body.find_all('tr')
     for row in rows:
         cols = row.find_all('td')
         cols = [ele.text.strip() for ele in cols]
@@ -48,7 +53,7 @@ def casos_covid_espana():
     # Imprimimos los resultados con los espacios y saltos de línea
     
     df = pd.DataFrame(data)
-    df.to_csv('Casos_COVID_Espana.csv')    
+    df.to_csv('csv\Casos_COVID_Espana.csv')    
     
     
 casos_covid_espana()

@@ -71,7 +71,7 @@ ax1.set_ylabel("ev_demanda")
 ax1.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda enero-febrero-marzo 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Grafico_anual.png")
+plt.savefig("Graficos\Grafico_anual.png")
 
 #gráfico mensual - enero
 fig, ax2=plt.subplots()
@@ -82,7 +82,7 @@ ax2.set_ylabel("ev_demanda")
 ax2.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda enero 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Grafico_enero.png")
+plt.savefig("Graficos\Grafico_enero.png")
 
 #gráfico mensual-febrero
 fig, ax3=plt.subplots()
@@ -93,7 +93,7 @@ ax3.set_ylabel("ev_demanda")
 ax3.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda febrero 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Grafico_febrero.png")
+plt.savefig("Graficos\Grafico_febrero.png")
 
 #gráfico mensual-marzo
 fig, ax4=plt.subplots()
@@ -104,7 +104,7 @@ ax4.set_ylabel("ev_demanda")
 ax4.legend(loc='center', title='año', bbox_to_anchor=(1, 0.5))
 fig.suptitle('ev_demanda marzo 2020/2019', fontsize=15)
 # Guardamos el gráfico
-plt.savefig("Grafico_marzo.png")
+plt.savefig("Graficos\Grafico_marzo.png")
 
 # Convertimos el df en un csv
-elect20.to_csv('Consumo_elect_COVID.csv') 
+elect20.to_csv('csv\Consumo_elect_COVID.csv') 

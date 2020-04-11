@@ -19,7 +19,8 @@ def casos_covid_espana():
     print(table)
     # Hasta aquí todo correcto y a partir de aquí no se acceder al tag del cuerpo de la tabla. He probado 
     # todos los métodos que se me ocurren (los hijos, los padres, el select, el next, etc.) y he buscado 
-    # en mil sitios por internet y nada...
+    # en mil sitios por internet y nada... Incluso he intentado acceder a la tabla mediante la librería Scrapy 
+    # 
     table_body = table.find_all_next('tbody')
     #print(table_body)
     # Definimos las condiciones que nos devolveran el mensaje de error

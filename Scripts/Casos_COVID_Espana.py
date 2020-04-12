@@ -1,3 +1,11 @@
+#### Nota aclaratoria de este script ####
+
+# El programa funciona correctamente pero ocurre algo muy extraño a lo que no le encuentro solución. Y es
+# que los datos que resultan en el csv de hacer el raspado no se corresponden en absoluto a los que aparecen
+# en la tabla del html de la web. Por este motivo, se ha decidido incluir el dataset de los casos acumulados
+# que se puede descargar de la misma web y hacer el análisis sobre el mismo, además del archivo csv que se 
+# genera ejecutando este script.
+
 # Importamos las librerias necesarias
 import requests
 from bs4 import BeautifulSoup
@@ -14,19 +22,7 @@ def casos_covid_espana():
     # Definimos el parser
     soup = BeautifulSoup(data,'lxml')
     # Buscamos la tabla de donde extraeremos los datos
-    table_body = soup.find_all('tbody')[1:]
-    
-    print(table_body)
-
-    #
-    # Hasta aquí todo correcto pero a partir de aquí no se acceder a los tag de tr y td (Da el siguiente 
-    # error: AttributeError: 'list' object has no attribute 'find_all'). 
-
-    # He probado todos los métodos que se me ocurren (los hijos, los padres, el select, el next, etc.) 
-    # y he buscado en mil sitios por internet y nada... Incluso he intentado acceder a la tabla mediante 
-    # la librería Scrapy. Al final he optado por descargar los datos directamente de la página para poder
-    # generar las gráficas que queriamos obtener.
-    # 
+    table_body = soup.find_all('tbody')[2:][0]   
 
     # Definimos las condiciones que nos devolveran el mensaje de error
     if r.status_code != 200:
@@ -47,12 +43,9 @@ def casos_covid_espana():
         cols = row.find_all('td')
         cols = [ele.text.strip() for ele in cols]
         data.append(cols)
-    return "".join(data)
-    print( "".join(data).strip() )   
-
-    # Imprimimos los resultados con los espacios y saltos de línea
-    
-    df = pd.DataFrame(data)
+      
+    # Definimos el DataFrame con los nombres de las columnas   
+    df = pd.DataFrame(data, columns=['CCAA','Total','Ult24h','Inc.14d'])
     df.to_csv('csv\Casos_COVID_Espana.csv')    
     
     
